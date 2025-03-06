@@ -26,9 +26,9 @@
         }
 
         .container img {
-            width: 100%;
+            width: auto;
             max-width: 800px; /* Ограничиваем максимальную ширину */
-            height: auto;
+            height: 100%;
             display: block;
             margin: 0 auto 20px; /* Центрируем и добавляем отступ вниз */
             border-radius: 10px;
@@ -82,12 +82,10 @@
     <div class="container">
         <!-- Логотип / Изображение -->
         <img src="logo.png" alt="Логотип">
-        
-        <h2>Форма заявки</h2>
 
         <!-- Сообщения -->
-        <div class="alert" id="success-message">Данные успешно отправлены!</div>
-        <div class="alert error" id="error-message">Произошла ошибка при отправке данных.</div>
+        <div class="alert" id="success-message">Данные успешно отправлены! С вами свяжутся для согласования визита в сервис!</div>
+        <div class="alert error" id="error-message">Произошла ошибка при отправке данных. Повторите попытку, пожалуйста!</div>
 
         <form id="requestForm">
             <label for="date_request">Дата заявки</label>
