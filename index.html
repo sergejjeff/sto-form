@@ -7,186 +7,92 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f4f4;
-            overflow-x: hidden;
+            margin: 20px;
         }
-        
-        .container {
-            width: 100%;
-            max-width: 600px; /* Ограничиваем максимальную ширину */
-            margin: 0 auto;
-            position: relative;
-            padding-top: 0; /* Убираем лишний отступ сверху */
-        }
-        
-        .container img {
-            width: 100%;
-            border-radius: 5px;
-            max-width: 800px;
-            display: block;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
         form {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 0; /* Убираем отступ сверху */
-            overflow: hidden;
-        }
-        
-        input, textarea, select {
-            width: 100%;
-            padding: 12px;
-            margin: 6px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-            box-sizing: border-box; /* Учитываем отступы внутри поля при расчете ширины */
-            display: block; /* Обеспечиваем блоковое расположение для полей */
-            margin-left: auto; /* Центрируем элементы */
-            margin-right: auto;
-        }
-        
-        .container {
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
-            position: relative;
-            padding-top: 0;
         }
-        
-        .container img {
+        input, textarea {
             width: 100%;
-            max-width: 800px;
-            display: block;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
+            padding: 10px;
+            margin: 5px 0 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
-        
-        form {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 0;
-            overflow: hidden;
-        }
-        
         button {
-            background-color: #0183ff;
+            background-color: #4CAF50;
             color: white;
-            padding: 12px 20px;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            width: 100%;
-            margin-top: 10px;
         }
-        
+        button:hover {
+            background-color: #45a049;
+        }
         .alert {
-            background-color: #4CAF50;
-            color: white;
+            display: none;
             padding: 10px;
             margin: 20px 0;
-            display: none;
             text-align: center;
+            color: white;
         }
-        
+        .alert.success {
+            background-color: #4CAF50;
+        }
         .alert.error {
             background-color: #f44336;
         }
-        
-        /* Медиазапрос для мобильных устройств */
-        @media (max-width: 768px) {
-            .container {
-                width: 90%;
-                padding: 0 10px;
-            }
-        
-            form {
-                padding: 20px;
-                margin-top: 0;
-            }
-        
-            input, textarea, select {
-                padding: 10px;
-                margin: 6px 0;
-                font-size: 14px;
-                box-sizing: border-box; /* Это гарантирует, что отступы внутри поля не будут увеличивать его ширину */
-                display: block;
-                margin-left: auto; /* Центрируем элементы */
-                margin-right: auto;
-            }
-        
-            button {
-                padding: 12px 0;
-            }
-        
-            .container img {
-                width: 100%;
-                max-width: 100%;
-                position: relative;
-            }
-        }
-
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Логотип / Изображение -->
-        <img src="logo.png" alt="Логотип">
+    <h2>Форма заявки на услуги СТО</h2>
 
-        <!-- Сообщения -->
-        <div class="alert" id="success-message">Данные успешно отправлены! С вами свяжутся для согласования визита в сервис!</div>
-        <div class="alert error" id="error-message">Произошла ошибка при отправке данных. Повторите попытку, пожалуйста!</div>
+    <div class="alert success" id="success-message">Данные успешно отправлены!</div>
+    <div class="alert error" id="error-message">Произошла ошибка при отправке данных.</div>
 
-        <form id="requestForm">
-            <label for="date_request">Дата заявки</label>
-            <input type="date" id="date_request" name="date_request" required>
+    <form id="requestForm">
+        <label for="date_request">Дата заявки</label>
+        <input type="date" id="date_request" name="date_request" required>
 
-            <label for="city">Город</label>
-            <input type="text" id="city" name="city" required>
+        <label for="city">Город</label>
+        <input type="text" id="city" name="city" required>
 
-            <label for="owner">Владелец ТС</label>
-            <input type="text" id="owner" name="owner" required>
+        <label for="owner">Владелец ТС</label>
+        <input type="text" id="owner" name="owner" required>
 
-            <label for="brand">Марка автомобиля</label>
-            <input type="text" id="brand" name="brand" required>
+        <label for="brand">Марка автомобиля</label>
+        <input type="text" id="brand" name="brand" required>
 
-            <label for="model">Модель автомобиля</label>
-            <input type="text" id="model" name="model" required>
+        <label for="model">Модель автомобиля</label>
+        <input type="text" id="model" name="model" required>
 
-            <label for="reg_number">Регистрационный номер</label>
-            <input type="text" id="reg_number" name="reg_number" required>
+        <label for="reg_number">Регистрационный номер автомобиля</label>
+        <input type="text" id="reg_number" name="reg_number" required>
 
-            <label for="vin">VIN номер</label>
-            <input type="text" id="vin" name="vin" required>
+        <label for="vin">VIN номер автомобиля</label>
+        <input type="text" id="vin" name="vin" required>
 
-            <label for="mileage">Пробег</label>
-            <input type="number" id="mileage" name="mileage" required>
+        <label for="mileage">Пробег автомобиля</label>
+        <input type="number" id="mileage" name="mileage" required>
 
-            <label for="contact_name">Ф.И.О. контактного лица</label>
-            <input type="text" id="contact_name" name="contact_name" required>
+        <label for="contact_name">Ф.И.О. контактного лица</label>
+        <input type="text" id="contact_name" name="contact_name" required>
 
-            <label for="phone">Номер телефона</label>
-            <input type="tel" id="phone" name="phone" required>
+        <label for="phone">Номер телефона контактного лица</label>
+        <input type="tel" id="phone" name="phone" required>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+        <label for="email">Email контактного лица</label>
+        <input type="email" id="email" name="email" required>
 
-            <label for="description">Описание неисправности</label>
-            <textarea id="description" name="description" rows="4" required></textarea>
+        <label for="description">Описание неисправности</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
 
-            <button type="submit">Отправить заявку</button>
-        </form>
-    </div>
+        <button type="submit">Отправить заявку</button>
+    </form>
 
     <script>
         document.getElementById('requestForm').addEventListener('submit', function(e) {
@@ -195,29 +101,27 @@
             const formData = new FormData(this);
             const data = Object.fromEntries(formData.entries());
 
-            fetch("https://script.google.com/macros/s/AKfycbyXeZRRGbLhVxTzEgutux207TPWJAdsc8_s-qE74CpHBsXAb_smc5OYyXXT6BntnP7V/exec", {
-                method: "POST",
-                mode: "cors",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
+            fetch('https://script.google.com/macros/s/AKfycbyxQdst-uzpy3D08bAt1ii0acROeqsWTl5wXTIaIrUrsfeqVkhJCYIM9rGRzh6Fh5o/exec', {
+                method: 'POST',
+                body: JSON.stringify(data), // Преобразуем данные в JSON
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                mode: 'no-cors'  // Этот флаг отключает CORS проверку
             })
-            .then(response => response.json())
-            .then(result => {
-                if (result.status === 'success') {
-                    document.getElementById('success-message').style.display = 'block';
-                    document.getElementById('error-message').style.display = 'none';
-                    document.getElementById('requestForm').reset();
-                } else {
-                    document.getElementById('success-message').style.display = 'none';
-                    document.getElementById('error-message').style.display = 'block';
-                }
+            .then(response => {
+                // Поскольку no-cors, не получим ответ, но мы предполагаем успех
+                document.getElementById('success-message').style.display = 'block';
+                document.getElementById('error-message').style.display = 'none';
+                document.getElementById('requestForm').reset();
             })
             .catch(error => {
+                console.error('Ошибка при отправке данных', error);
                 document.getElementById('success-message').style.display = 'none';
                 document.getElementById('error-message').style.display = 'block';
-                console.error('Ошибка:', error);
             });
         });
     </script>
 </body>
 </html>
+
