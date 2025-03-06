@@ -7,15 +7,14 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
             background-color: #f4f4f4;  /* Цвет фона для страницы */
         }
         
         .container {
             width: 100%;
-            max-width: 600px; /* Ограничим максимальную ширину */
+            max-width: 600px;  /* Ограничиваем максимальную ширину */
             margin: 0 auto;
-            padding-top: 400px;
         }
         
         .container img {
@@ -23,17 +22,16 @@
             height: auto;           /* Поддерживаем пропорции */
             max-width: 800px;       /* Ограничиваем максимальную ширину */
             display: block;
-            margin: 0 auto 20px;    /* Центрируем и отступ снизу */
-            border-radius: 10px;
+            margin: 0 auto 30px;    /* Центрируем изображение и добавляем отступ снизу */
         }
         
-        /* Стили для формы */
+        /* Добавим отступ сверху для формы */
         form {
             background-color: #ffffff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
+            margin-top: 40px;  /* Добавляем отступ сверху для формы */
         }
         
         /* Псевдоклассы для полей формы */
@@ -69,6 +67,27 @@
         
         .alert.error {
             background-color: #f44336;
+        }
+        
+        /* Медиазапрос для мобильных устройств */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;   /* Уменьшаем ширину контейнера на мобильных устройствах */
+                padding: 0 10px; /* Добавляем отступы по бокам */
+            }
+        
+            form {
+                padding: 15px;  /* Уменьшаем отступы формы */
+            }
+        
+            button {
+                padding: 12px 0;  /* Делаем кнопку выше на мобильных */
+            }
+        
+            .container img {
+                width: 100%;
+                max-width: 100%;   /* Убираем ограничение по максимальной ширине */
+            }
         }
         
         /* Медиазапрос для мобильных устройств */
