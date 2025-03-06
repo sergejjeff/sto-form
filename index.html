@@ -25,10 +25,8 @@
             max-width: 800px;
             display: block;
             margin: 0 auto;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;  /* Отправляем изображение на задний план */
+            position: relative; /* Убираем absolute, чтобы изображение не прилипало к верхнему краю */
+            z-index: 1;
         }
         
         form {
@@ -36,7 +34,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 230px; /* Делаем отступ, чтобы форма не перекрывала изображение */
+            margin-top: 40px; /* Делаем отступ сверху для формы */
         }
         
         button {
@@ -72,15 +70,16 @@
         
             form {
                 padding: 15px;
-                margin-top: 180px; /* Отступ для формы на мобильных устройствах */
+                margin-top: 60px; /* Увеличиваем отступ сверху на мобильных устройствах */
             }
         
             .container img {
                 width: 100%;
                 max-width: 100%;
-                position: static; /* Снимаем фиксированное позиционирование для мобильных */
+                position: relative; /* Убираем фиксированное позиционирование для мобильных */
             }
         }
+
     </style>
 </head>
 <body>
