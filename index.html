@@ -21,16 +21,18 @@
             width: 500px;
             padding: 20px;
             border-radius: 10px;
+            margin-top: 20px;  /* Отступ сверху для улучшения видимости */
+            margin-bottom: 20px;  /* Отступ снизу, чтобы картинка не была прижата к форме */
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
         .container img {
-            width: 100%;
-            max-width: 800px; /* Ограничиваем максимальную ширину */
-            height: auto;
+            width: 100%;            /* Растягиваем по ширине контейнера */
+            height: auto;           /* Поддерживаем пропорции */
+            max-width: 800px;       /* Ограничиваем максимальную ширину */
             display: block;
-            margin: 0 auto 20px; /* Центрируем и добавляем отступ вниз */
+            margin: 0 auto 20px;    /* Центрируем и отступ снизу */
             border-radius: 10px;
         }
 
