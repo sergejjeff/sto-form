@@ -202,18 +202,18 @@
             event.preventDefault();
         
             let formData = {
-                request_date: document.querySelector("#request_date").value,
+                request_date: document.querySelector("#date_request").value, // исправлено
                 city: document.querySelector("#city").value,
                 owner: document.querySelector("#owner").value,
-                car_brand: document.querySelector("#car_brand").value,
-                car_model: document.querySelector("#car_model").value,
-                car_number: document.querySelector("#car_number").value,
+                car_brand: document.querySelector("#brand").value, // исправлено
+                car_model: document.querySelector("#model").value, // исправлено
+                car_number: document.querySelector("#reg_number").value, // исправлено
                 vin: document.querySelector("#vin").value,
                 mileage: document.querySelector("#mileage").value,
                 contact_name: document.querySelector("#contact_name").value,
                 phone: document.querySelector("#phone").value,
                 email: document.querySelector("#email").value,
-                issue: document.querySelector("#issue").value
+                issue: document.querySelector("#description").value // исправлено
             };
         
             fetch("https://script.google.com/macros/s/AKfycbxMwzIrr6rqlG3fTq7b-UloNAO4d-YnuedWFx4V0Nbhk0gAT91roATYgiFelbmnvtOH/exec", {
