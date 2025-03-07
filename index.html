@@ -198,45 +198,38 @@
         <div class="alert error" id="error-message">Произошла ошибка при отправке данных.</div>
         
         <script>
-        document.getElementById('requestForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault();
         
-            const formData = new FormData(this);
-            const data = {
-                date_request: formData.get("date_request"),
-                city: formData.get("city"),
-                owner: formData.get("owner"),
-                brand: formData.get("brand"),
-                model: formData.get("model"),
-                reg_number: formData.get("reg_number"),
-                vin: formData.get("vin"),
-                mileage: formData.get("mileage"),
-                contact_name: formData.get("contact_name"),
-                phone: formData.get("phone"),
-                email: formData.get("email"),
-                description: formData.get("description")
+            let formData = {
+                request_date: document.querySelector("#request_date").value,
+                city: document.querySelector("#city").value,
+                owner: document.querySelector("#owner").value,
+                car_brand: document.querySelector("#car_brand").value,
+                car_model: document.querySelector("#car_model").value,
+                car_number: document.querySelector("#car_number").value,
+                vin: document.querySelector("#vin").value,
+                mileage: document.querySelector("#mileage").value,
+                contact_name: document.querySelector("#contact_name").value,
+                phone: document.querySelector("#phone").value,
+                email: document.querySelector("#email").value,
+                issue: document.querySelector("#issue").value
             };
         
-            fetch('https://script.google.com/macros/s/AKfycbwOutPyCIDnwM9AbOZwFzVs1SGcoj9xSs3SweAPi53ibFoXexUH1tZ97m5E6bmRyEHR/exec', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
+            fetch("https://script.google.com/macros/s/AKfycbxMwzIrr6rqlG3fTq7b-UloNAO4d-YnuedWFx4V0Nbhk0gAT91roATYgiFelbmnvtOH/exec", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
             })
             .then(response => response.json())
-            .then(result => {
-                if (result.status === 'success') {
-                    document.getElementById('success-message').style.display = 'block';
-                    document.getElementById('error-message').style.display = 'none';
-                    document.getElementById('requestForm').reset();
+            .then(data => {
+                if (data.status === "success") {
+                    alert("Заявка отправлена!");
                 } else {
-                    throw new Error('Ошибка обработки данных');
+                    alert("Ошибка при отправке заявки.");
                 }
             })
-            .catch(error => {
-                console.error("Ошибка:", error);
-                document.getElementById('success-message').style.display = 'none';
-                document.getElementById('error-message').style.display = 'block';
-            });
+            .catch(error => console.error("Ошибка:", error));
         });
         </script>
 </body>
