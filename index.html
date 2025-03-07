@@ -84,9 +84,13 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
             width: 100%;
-            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #016bcc;
         }
         
         .alert {
@@ -103,11 +107,14 @@
         }
         
         /* Медиазапрос для мобильных устройств */
-        @media (max-width: 768px) {
-            .container {
-                width: 90%;
-                padding: 0 10px;
+        @media (max-width: 600px) {
+            input, textarea, select {
+                font-size: 16px;
             }
+            button {
+                font-size: 16px;
+            }
+        }
         
             form {
                 padding: 20px;
