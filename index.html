@@ -154,44 +154,44 @@
         <div class="alert" id="success-message">Данные успешно отправлены!</div>
         <div class="alert error" id="error-message">Произошла ошибка при отправке данных.</div>
 
-        <form id="requestForm">
-            <label for="date_request">Дата заявки</label>
-            <input type="date" id="date_request" name="date_request" required>
-        
-            <label for="city">Город</label>
-            <input type="text" id="city" name="city" required>
-        
-            <label for="owner">Владелец ТС</label>
-            <input type="text" id="owner" name="owner" required>
-        
-            <label for="brand">Марка автомобиля</label>
-            <input type="text" id="brand" name="brand" required>
-        
-            <label for="model">Модель автомобиля</label>
-            <input type="text" id="model" name="model" required>
-        
-            <label for="reg_number">Регистрационный номер</label>
-            <input type="text" id="reg_number" name="reg_number" required>
-        
-            <label for="vin">VIN номер</label>
-            <input type="text" id="vin" name="vin" required>
-        
-            <label for="mileage">Пробег</label>
-            <input type="number" id="mileage" name="mileage" required>
-        
-            <label for="contact_name">Имя контактного лица</label>
-            <input type="text" id="contact_name" name="contact_name" required>
-        
-            <label for="phone">Номер телефона</label>
-            <input type="tel" id="phone" name="phone" required>
-        
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-        
-            <label for="description">Описание неисправности</label>
-            <textarea id="description" name="description" rows="4" required></textarea>
-        
-            <button type="submit">Отправить заявку</button>
+        <form id="sto-form">
+          <label for="date_request">Дата заявки</label>
+          <input type="date" id="date_request">
+          
+          <label for="city">Город</label>
+          <input type="text" id="city">
+          
+          <label for="owner">Владелец ТС</label>
+          <input type="text" id="owner">
+          
+          <label for="brand">Марка автомобиля</label>
+          <input type="text" id="brand">
+          
+          <label for="model">Модель автомобиля</label>
+          <input type="text" id="model">
+          
+          <label for="reg_number">Рег. номер</label>
+          <input type="text" id="reg_number">
+          
+          <label for="vin">VIN номер</label>
+          <input type="text" id="vin">
+          
+          <label for="mileage">Пробег</label>
+          <input type="number" id="mileage">
+          
+          <label for="contact_name">Контактное лицо</label>
+          <input type="text" id="contact_name">
+          
+          <label for="phone">Телефон</label>
+          <input type="text" id="phone">
+          
+          <label for="email">Email</label>
+          <input type="email" id="email">
+          
+          <label for="description">Описание неисправности</label>
+          <textarea id="description"></textarea>
+          
+          <button type="submit">Отправить заявку</button>
         </form>
         
         <div class="alert" id="success-message">Данные успешно отправлены!</div>
@@ -200,22 +200,30 @@
         <script>
         document.querySelector("form").addEventListener("submit", function (event) {
             event.preventDefault();
-        
+            
+            // Проверяем, существуют ли элементы перед их использованием
             let formData = {
-                request_date: document.querySelector("#date_request").value, // исправлено
-                city: document.querySelector("#city").value,
-                owner: document.querySelector("#owner").value,
-                car_brand: document.querySelector("#brand").value, // исправлено
-                car_model: document.querySelector("#model").value, // исправлено
-                car_number: document.querySelector("#reg_number").value, // исправлено
-                vin: document.querySelector("#vin").value,
-                mileage: document.querySelector("#mileage").value,
-                contact_name: document.querySelector("#contact_name").value,
-                phone: document.querySelector("#phone").value,
-                email: document.querySelector("#email").value,
-                issue: document.querySelector("#description").value // исправлено
+                request_date: document.querySelector("#date_request") ? document.querySelector("#date_request").value : '',
+                city: document.querySelector("#city") ? document.querySelector("#city").value : '',
+                owner: document.querySelector("#owner") ? document.querySelector("#owner").value : '',
+                car_brand: document.querySelector("#brand") ? document.querySelector("#brand").value : '',
+                car_model: document.querySelector("#model") ? document.querySelector("#model").value : '',
+                car_number: document.querySelector("#reg_number") ? document.querySelector("#reg_number").value : '',
+                vin: document.querySelector("#vin") ? document.querySelector("#vin").value : '',
+                mileage: document.querySelector("#mileage") ? document.querySelector("#mileage").value : '',
+                contact_name: document.querySelector("#contact_name") ? document.querySelector("#contact_name").value : '',
+                phone: document.querySelector("#phone") ? document.querySelector("#phone").value : '',
+                email: document.querySelector("#email") ? document.querySelector("#email").value : '',
+                issue: document.querySelector("#description") ? document.querySelector("#description").value : ''
             };
         
+            // Проверка, что все поля заполнены перед отправкой
+            if (!formData.request_date || !formData.city || !formData.owner || !formData.car_brand || !formData.car_model || !formData.car_number || !formData.vin || !formData.mileage || !formData.contact_name || !formData.phone || !formData.email || !formData.issue) {
+                alert("Пожалуйста, заполните все поля.");
+                return;
+            }
+        
+            // Отправка данных на сервер
             fetch("https://script.google.com/macros/s/AKfycbxMwzIrr6rqlG3fTq7b-UloNAO4d-YnuedWFx4V0Nbhk0gAT91roATYgiFelbmnvtOH/exec", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
