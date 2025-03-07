@@ -200,31 +200,24 @@
         <script>
         document.querySelector("form").addEventListener("submit", function (event) {
             event.preventDefault();
-            
-            // Проверяем, существуют ли элементы перед их использованием
+        
             let formData = {
-                request_date: document.querySelector("#date_request") ? document.querySelector("#date_request").value : '',
-                city: document.querySelector("#city") ? document.querySelector("#city").value : '',
-                owner: document.querySelector("#owner") ? document.querySelector("#owner").value : '',
-                car_brand: document.querySelector("#brand") ? document.querySelector("#brand").value : '',
-                car_model: document.querySelector("#model") ? document.querySelector("#model").value : '',
-                car_number: document.querySelector("#reg_number") ? document.querySelector("#reg_number").value : '',
-                vin: document.querySelector("#vin") ? document.querySelector("#vin").value : '',
-                mileage: document.querySelector("#mileage") ? document.querySelector("#mileage").value : '',
-                contact_name: document.querySelector("#contact_name") ? document.querySelector("#contact_name").value : '',
-                phone: document.querySelector("#phone") ? document.querySelector("#phone").value : '',
-                email: document.querySelector("#email") ? document.querySelector("#email").value : '',
-                issue: document.querySelector("#description") ? document.querySelector("#description").value : ''
+                request_date: document.querySelector("#date_request").value, // исправлено
+                city: document.querySelector("#city").value,
+                owner: document.querySelector("#owner").value,
+                car_brand: document.querySelector("#brand").value, // исправлено
+                car_model: document.querySelector("#model").value, // исправлено
+                car_number: document.querySelector("#reg_number").value, // исправлено
+                vin: document.querySelector("#vin").value,
+                mileage: document.querySelector("#mileage").value,
+                contact_name: document.querySelector("#contact_name").value,
+                phone: document.querySelector("#phone").value,
+                email: document.querySelector("#email").value,
+                issue: document.querySelector("#description").value // исправлено
             };
         
-            // Проверка, что все поля заполнены перед отправкой
-            if (!formData.request_date || !formData.city || !formData.owner || !formData.car_brand || !formData.car_model || !formData.car_number || !formData.vin || !formData.mileage || !formData.contact_name || !formData.phone || !formData.email || !formData.issue) {
-                alert("Пожалуйста, заполните все поля.");
-                return;
-            }
-        
-            // Отправка данных на сервер
-            fetch("https://script.google.com/macros/s/AKfycbxMwzIrr6rqlG3fTq7b-UloNAO4d-YnuedWFx4V0Nbhk0gAT91roATYgiFelbmnvtOH/exec", {
+            // Обновите URL на ваш локальный сервер
+            fetch("http://localhost:3000/submit-form", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
