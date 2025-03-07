@@ -198,11 +198,11 @@
     <script>
         document.getElementById('requestForm').addEventListener('submit', function(e) {
             e.preventDefault();
-    
+        
             const formData = new FormData(this);
             const data = Object.fromEntries(formData.entries());
-    
-            fetch("https://script.google.com/macros/s/AKfycbxQvaOtXtnFm_xn4NPQJY1qoaxjSj-vEJxsmhwc3YLJmaRw9pIXMoKbPdFIKGr3QsmQ/exec", {
+        
+            fetch("https://script.google.com/macros/s/AKfycbyrvYGwrCUs-RL93AGtOpffmTemzwokSUd28d83mOn4fQ3ZJ6i1wQOnnRrKyL5qZokO/exec", {
                 method: "POST",
                 mode: "cors",
                 headers: { "Content-Type": "application/json" },
