@@ -198,10 +198,10 @@
     <script>
         document.getElementById('requestForm').addEventListener('submit', function(e) {
             e.preventDefault();
-
+    
             const formData = new FormData(this);
             const data = Object.fromEntries(formData.entries());
-
+    
             fetch("https://script.google.com/macros/s/AKfycbzHrrLZ94_hTDNSqH9psIjb526Quci1aF2QWnqkFoaJ9808k6dmUghl2H7FugFipl0f/exec", {
                 method: "POST",
                 mode: "cors",
@@ -228,7 +228,7 @@
                 document.getElementById('success-message').style.display = 'none';
                 document.getElementById('error-message').style.display = 'block';
             });
-            
+        });
     </script>
 </body>
 </html>
