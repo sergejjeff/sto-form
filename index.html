@@ -157,63 +157,72 @@
         <form id="requestForm">
             <label for="date_request">Дата заявки</label>
             <input type="date" id="date_request" name="date_request" required>
-
-            <label for="data.city">Город</label>
-            <input type="text" id="data.city" name="data.city" required>
-
-            <label for="data.owner">Владелец ТС</label>
-            <input type="text" id="data.owner" name="data.owner" required>
-
-            <label for="data.brand">Марка автомобиля</label>
-            <input type="text" id="data.brand" name="data.brand" required>
-
-            <label for="data.model">Модель автомобиля</label>
-            <input type="text" id="data.model" name="data.model" required>
-
-            <label for="data.reg_number">Регистрационный номер</label>
-            <input type="text" id="data.reg_number" name="data.reg_number" required>
-
-            <label for="data.vin">VIN номер</label>
-            <input type="text" id="data.vin" name="data.vin" required>
-
-            <label for="data.mileage">Пробег</label>
-            <input type="number" id="data.mileage" name="data.mileage" required>
-
-            <label for="data.contact_name">Имя контактного лица</label>
-            <input type="text" id="data.contact_name" name="data.contact_name" required>
-
-            <label for="data.phone">Номер телефона</label>
-            <input type="tel" id="data.phone" name="data.phone" required>
-
-            <label for="data.email">Email</label>
-            <input type="email" id="data.email" name="data.email" required>
-
-            <label for="data.description">Описание неисправности</label>
-            <textarea id="data.description" name="data.description" rows="4" required></textarea>
-
+        
+            <label for="city">Город</label>
+            <input type="text" id="city" name="city" required>
+        
+            <label for="owner">Владелец ТС</label>
+            <input type="text" id="owner" name="owner" required>
+        
+            <label for="brand">Марка автомобиля</label>
+            <input type="text" id="brand" name="brand" required>
+        
+            <label for="model">Модель автомобиля</label>
+            <input type="text" id="model" name="model" required>
+        
+            <label for="reg_number">Регистрационный номер</label>
+            <input type="text" id="reg_number" name="reg_number" required>
+        
+            <label for="vin">VIN номер</label>
+            <input type="text" id="vin" name="vin" required>
+        
+            <label for="mileage">Пробег</label>
+            <input type="number" id="mileage" name="mileage" required>
+        
+            <label for="contact_name">Имя контактного лица</label>
+            <input type="text" id="contact_name" name="contact_name" required>
+        
+            <label for="phone">Номер телефона</label>
+            <input type="tel" id="phone" name="phone" required>
+        
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        
+            <label for="description">Описание неисправности</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+        
             <button type="submit">Отправить заявку</button>
         </form>
-    </div>
-
-    <script>
+        
+        <div class="alert" id="success-message">Данные успешно отправлены!</div>
+        <div class="alert error" id="error-message">Произошла ошибка при отправке данных.</div>
+        
+        <script>
         document.getElementById('requestForm').addEventListener('submit', function(e) {
             e.preventDefault();
         
             const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
+            const data = {
+                date_request: formData.get("date_request"),
+                city: formData.get("city"),
+                owner: formData.get("owner"),
+                brand: formData.get("brand"),
+                model: formData.get("model"),
+                reg_number: formData.get("reg_number"),
+                vin: formData.get("vin"),
+                mileage: formData.get("mileage"),
+                contact_name: formData.get("contact_name"),
+                phone: formData.get("phone"),
+                email: formData.get("email"),
+                description: formData.get("description")
+            };
         
-            fetch("https://script.google.com/macros/s/AKfycbytNBCWaTxWTkknplOb7fczdLBEHfmzIGq8vL0sTl5zekDMkku3XmGvhFm0cwkk2kBg/exec", {
-                method: "POST",
-                mode: "cors",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
+            fetch('https://script.google.com/macros/s/AKfycbwOutPyCIDnwM9AbOZwFzVs1SGcoj9xSs3SweAPi53ibFoXexUH1tZ97m5E6bmRyEHR/exec', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
             })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Ошибка сервера: ${response.status} ${response.statusText}`);
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(result => {
                 if (result.status === 'success') {
                     document.getElementById('success-message').style.display = 'block';
@@ -229,6 +238,6 @@
                 document.getElementById('error-message').style.display = 'block';
             });
         });
-    </script>
+        </script>
 </body>
 </html>
