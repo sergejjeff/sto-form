@@ -14,45 +14,6 @@
         
         .container {
             width: 100%;
-            max-width: 600px; /* Ограничиваем максимальную ширину */
-            margin: 0 auto;
-            position: relative;
-            padding-top: 0; /* Убираем лишний отступ сверху */
-        }
-        
-        .container img {
-            width: 100%;
-            max-width: 800px;
-            display: block;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        form {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 0; /* Убираем отступ сверху */
-            overflow: hidden;
-        }
-        
-        input, textarea, select {
-            width: 100%;
-            padding: 12px;
-            margin: 6px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-            box-sizing: border-box; /* Учитываем отступы внутри поля при расчете ширины */
-            display: block; /* Обеспечиваем блоковое расположение для полей */
-            margin-left: auto; /* Центрируем элементы */
-            margin-right: auto;
-        }
-        
-        .container {
-            width: 100%;
             max-width: 600px;
             margin: 0 auto;
             position: relative;
@@ -75,6 +36,19 @@
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             margin-top: 0;
             overflow: hidden;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            margin: 6px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            box-sizing: border-box;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         button {
@@ -106,7 +80,6 @@
             background-color: #f44336;
         }
         
-        /* Медиазапрос для мобильных устройств */
         @media (max-width: 600px) {
             input, textarea, select {
                 font-size: 16px;
@@ -115,108 +88,77 @@
                 font-size: 16px;
             }
         }
-        
-            form {
-                padding: 20px;
-                margin-top: 0;
-            }
-        
-            input, textarea, select {
-                padding: 10px;
-                margin: 6px 0;
-                font-size: 14px;
-                box-sizing: border-box; /* Это гарантирует, что отступы внутри поля не будут увеличивать его ширину */
-                display: block;
-                margin-left: auto; /* Центрируем элементы */
-                margin-right: auto;
-            }
-        
-            button {
-                padding: 12px 0;
-            }
-        
-            .container img {
-                width: 100%;
-                max-width: 100%;
-                position: relative;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Логотип / Изображение -->
         <img src="logo.png" alt="Логотип">
         
         <h2>Форма заявки</h2>
 
-        <!-- Сообщения -->
         <div class="alert" id="success-message">Данные успешно отправлены!</div>
         <div class="alert error" id="error-message">Произошла ошибка при отправке данных.</div>
 
         <form id="sto-form">
-          <label for="date_request">Дата заявки</label>
-          <input type="date" id="date_request">
-          
-          <label for="city">Город</label>
-          <input type="text" id="city">
-          
-          <label for="owner">Владелец ТС</label>
-          <input type="text" id="owner">
-          
-          <label for="brand">Марка автомобиля</label>
-          <input type="text" id="brand">
-          
-          <label for="model">Модель автомобиля</label>
-          <input type="text" id="model">
-          
-          <label for="reg_number">Рег. номер</label>
-          <input type="text" id="reg_number">
-          
-          <label for="vin">VIN номер</label>
-          <input type="text" id="vin">
-          
-          <label for="mileage">Пробег</label>
-          <input type="number" id="mileage">
-          
-          <label for="contact_name">Контактное лицо</label>
-          <input type="text" id="contact_name">
-          
-          <label for="phone">Телефон</label>
-          <input type="text" id="phone">
-          
-          <label for="email">Email</label>
-          <input type="email" id="email">
-          
-          <label for="description">Описание неисправности</label>
-          <textarea id="description"></textarea>
-          
-          <button type="submit">Отправить заявку</button>
+            <label for="date_request">Дата заявки</label>
+            <input type="date" id="date_request" name="request_date">
+
+            <label for="city">Город</label>
+            <input type="text" id="city" name="city">
+
+            <label for="owner">Владелец ТС</label>
+            <input type="text" id="owner" name="owner">
+
+            <label for="brand">Марка автомобиля</label>
+            <input type="text" id="brand" name="car_brand">
+
+            <label for="model">Модель автомобиля</label>
+            <input type="text" id="model" name="car_model">
+
+            <label for="reg_number">Рег. номер</label>
+            <input type="text" id="reg_number" name="car_number">
+
+            <label for="vin">VIN номер</label>
+            <input type="text" id="vin" name="vin">
+
+            <label for="mileage">Пробег</label>
+            <input type="number" id="mileage" name="mileage">
+
+            <label for="contact_name">Контактное лицо</label>
+            <input type="text" id="contact_name" name="contact_name">
+
+            <label for="phone">Телефон</label>
+            <input type="tel" id="phone" name="phone">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+
+            <label for="description">Описание неисправности</label>
+            <textarea id="description" name="issue"></textarea>
+
+            <button type="submit">Отправить заявку</button>
         </form>
-        
-        <div class="alert" id="success-message">Данные успешно отправлены!</div>
-        <div class="alert error" id="error-message">Произошла ошибка при отправке данных.</div>
-        
-        <script>
-        document.querySelector("form").addEventListener("submit", function (event) {
+    </div>
+
+    <script>
+        document.querySelector("#sto-form").addEventListener("submit", function (event) {
             event.preventDefault();
-        
+
             let formData = {
-                request_date: document.querySelector("#date_request").value, // исправлено
+                request_date: document.querySelector("#date_request").value,
                 city: document.querySelector("#city").value,
                 owner: document.querySelector("#owner").value,
-                car_brand: document.querySelector("#brand").value, // исправлено
-                car_model: document.querySelector("#model").value, // исправлено
-                car_number: document.querySelector("#reg_number").value, // исправлено
+                car_brand: document.querySelector("#brand").value,
+                car_model: document.querySelector("#model").value,
+                car_number: document.querySelector("#reg_number").value,
                 vin: document.querySelector("#vin").value,
                 mileage: document.querySelector("#mileage").value,
                 contact_name: document.querySelector("#contact_name").value,
                 phone: document.querySelector("#phone").value,
                 email: document.querySelector("#email").value,
-                issue: document.querySelector("#description").value // исправлено
+                issue: document.querySelector("#description").value
             };
-        
-            // Обновите URL на ваш локальный сервер
+
             fetch("http://localhost:3000/submit-form", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -225,13 +167,19 @@
             .then(response => response.json())
             .then(data => {
                 if (data.status === "success") {
-                    alert("Заявка отправлена!");
+                    document.querySelector("#success-message").style.display = "block";
+                    document.querySelector("#error-message").style.display = "none";
                 } else {
-                    alert("Ошибка при отправке заявки.");
+                    document.querySelector("#error-message").style.display = "block";
+                    document.querySelector("#success-message").style.display = "none";
                 }
             })
-            .catch(error => console.error("Ошибка:", error));
+            .catch(error => {
+                console.error("Ошибка:", error);
+                document.querySelector("#error-message").style.display = "block";
+                document.querySelector("#success-message").style.display = "none";
+            });
         });
-        </script>
+    </script>
 </body>
 </html>
