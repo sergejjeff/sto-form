@@ -144,6 +144,23 @@
         document.querySelector("#zajavka-na-CTO").addEventListener("submit", function (event) {
             event.preventDefault();
 
+            // Проверка всех полей на заполненность
+            let isValid = true;
+            document.querySelectorAll("input[required], textarea[required]").forEach(function(input) {
+                if (!input.value) {
+                    isValid = false;
+                    input.style.borderColor = "red"; // Подсвечиваем красным незаполненные поля
+                } else {
+                    input.style.borderColor = "#ccc"; // Восстанавливаем цвет границы
+                }
+            });
+
+            if (!isValid) {
+                document.querySelector("#error-message").style.display = "block";
+                document.querySelector("#success-message").style.display = "none";
+                return; // Прекращаем выполнение, если есть незаполненные поля
+            }
+
             let formData = {
                 request_date: document.querySelector("#date_request").value,
                 city: document.querySelector("#city").value,
