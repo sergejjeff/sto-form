@@ -11,7 +11,7 @@
             background-color: #f4f4f4;
             overflow-x: hidden;
         }
-        
+
         .container {
             width: 100%;
             max-width: 600px;
@@ -19,7 +19,7 @@
             position: relative;
             padding-top: 0;
         }
-        
+
         .container img {
             width: 100%;
             max-width: 800px;
@@ -28,7 +28,7 @@
             position: relative;
             z-index: 1;
         }
-        
+
         form {
             background-color: #ffffff;
             padding: 20px;
@@ -37,7 +37,7 @@
             margin-top: 0;
             overflow: hidden;
         }
-        
+
         input, textarea, select {
             width: 100%;
             padding: 12px;
@@ -50,7 +50,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
+
         button {
             background-color: #0183ff;
             color: white;
@@ -62,11 +62,11 @@
             width: 100%;
             transition: background-color 0.3s ease;
         }
-        
+
         button:hover {
             background-color: #016bcc;
         }
-        
+
         .alert {
             background-color: #4CAF50;
             color: white;
@@ -75,11 +75,11 @@
             display: none;
             text-align: center;
         }
-        
+
         .alert.error {
             background-color: #f44336;
         }
-        
+
         @media (max-width: 600px) {
             input, textarea, select {
                 font-size: 16px;
@@ -93,55 +93,55 @@
 <body>
     <div class="container">
         <img src="logo.png" alt="Логотип">
-        
-        <h2>Форма заявки</h2>
 
-        <div class="alert" id="success-message">Данные успешно отправлены!</div>
-        <div class="alert error" id="error-message">Произошла ошибка при отправке данных.</div>
+        <h2>Пожалуйста, заполните форму ниже для записи на СТО</h2>
 
-        <form id="sto-form">
+        <div class="alert" id="success-message">Данные успешно отправлены! Мы скоро с вами свяжемся для согласования визита на СТО</div>
+        <div class="alert error" id="error-message">Произошла ошибка при отправке данных, попробуйте еще раз!</div>
+
+        <form id="zajavka-na-CTO">
             <label for="date_request">Дата заявки</label>
-            <input type="date" id="date_request" name="request_date">
+            <input type="date" id="date_request" name="request_date" required>
 
             <label for="city">Город</label>
-            <input type="text" id="city" name="city">
+            <input type="text" id="city" name="city" required>
 
             <label for="owner">Владелец ТС</label>
-            <input type="text" id="owner" name="owner">
+            <input type="text" id="owner" name="owner" required>
 
             <label for="brand">Марка автомобиля</label>
-            <input type="text" id="brand" name="car_brand">
+            <input type="text" id="brand" name="car_brand" required>
 
             <label for="model">Модель автомобиля</label>
-            <input type="text" id="model" name="car_model">
+            <input type="text" id="model" name="car_model" required>
 
             <label for="reg_number">Рег. номер</label>
-            <input type="text" id="reg_number" name="car_number">
+            <input type="text" id="reg_number" name="car_number" required>
 
             <label for="vin">VIN номер</label>
-            <input type="text" id="vin" name="vin">
+            <input type="text" id="vin" name="vin" required>
 
             <label for="mileage">Пробег</label>
-            <input type="number" id="mileage" name="mileage">
+            <input type="number" id="mileage" name="mileage" required>
 
             <label for="contact_name">Контактное лицо</label>
-            <input type="text" id="contact_name" name="contact_name">
+            <input type="text" id="contact_name" name="contact_name" required>
 
             <label for="phone">Телефон</label>
-            <input type="tel" id="phone" name="phone">
+            <input type="tel" id="phone" name="phone" required>
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" required>
 
             <label for="description">Описание неисправности</label>
-            <textarea id="description" name="issue"></textarea>
+            <textarea id="description" name="issue" required></textarea>
 
             <button type="submit">Отправить заявку</button>
         </form>
     </div>
 
     <script>
-        document.querySelector("#sto-form").addEventListener("submit", function (event) {
+        document.querySelector("#zajavka-na-CTO").addEventListener("submit", function (event) {
             event.preventDefault();
 
             let formData = {
@@ -169,6 +169,7 @@
                 if (data.status === "success") {
                     document.querySelector("#success-message").style.display = "block";
                     document.querySelector("#error-message").style.display = "none";
+                    document.querySelector("#zajavka-na-CTO").reset();  // Очищаем форму
                 } else {
                     document.querySelector("#error-message").style.display = "block";
                     document.querySelector("#success-message").style.display = "none";
