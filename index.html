@@ -3,201 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Форма заявки</title>
+    <title>Заявка на доверенность</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f4f4;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
             max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-            padding-top: 0;
-        }
-
-        .container img {
-            width: 100%;
-            max-width: 800px;
-            display: block;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        form {
-            background-color: #ffffff;
+            margin: auto;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 0;
-            overflow: hidden;
         }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 12px;
-            margin: 6px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-            box-sizing: border-box;
+        label {
             display: block;
-            margin-left: auto;
-            margin-right: auto;
+            margin-top: 10px;
+            font-weight: bold;
         }
-
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
         button {
-            background-color: #0183ff;
+            background-color: #007bff;
             color: white;
-            padding: 12px 20px;
+            padding: 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 18px;
-            width: 100%;
-            transition: background-color 0.3s ease;
+            margin-top: 10px;
         }
-
-        button:hover {
-            background-color: #016bcc;
-        }
-
-        .alert {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            margin: 20px 0;
-            display: none;
-            text-align: center;
-        }
-
-        .alert.error {
-            background-color: #f44336;
-        }
-
-        @media (max-width: 600px) {
-            input, textarea, select {
-                font-size: 16px;
-            }
-            button {
-                font-size: 16px;
-            }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="logo.png" alt="Логотип">
 
-        <h2>Пожалуйста, заполните форму ниже для записи на СТО</h2>
+    <h2>Заявка на доверенность</h2>
+    <form id="trustForm">
 
-        <div class="alert" id="success-message">Данные успешно отправлены! Мы скоро с вами свяжемся для согласования визита на СТО</div>
-        <div class="alert error" id="error-message">Произошла ошибка при отправке данных, попробуйте еще раз!</div>
+        <label>
+            <input type="checkbox" id="consent" checked>
+            Даю согласие на обработку персональных данных
+        </label>
 
-        <form id="zajavka-na-CTO">
-            <label for="date_request">Дата заявки</label>
-            <input type="date" id="date_request" name="request_date" required>
+        <label>Город предъявления доверенности</label>
+        <input type="text" name="city" required>
 
-            <label for="city">Город</label>
-            <input type="text" id="city" name="city" required>
+        <label>Ф.И.О. получателя доверенности</label>
+        <input type="text" name="full_name" required>
 
-            <label for="owner">Владелец ТС</label>
-            <input type="text" id="owner" name="owner" required>
+        <label>Номер телефона</label>
+        <input type="tel" name="phone" required>
 
-            <label for="brand">Марка автомобиля</label>
-            <input type="text" id="brand" name="car_brand" required>
+        <label>Документ, удостоверяющий личность</label>
+        <select name="identity_document" required>
+            <option value="паспорт гражданина РФ">Паспорт гражданина РФ</option>
+            <option value="заграничный паспорт гражданина РФ">Заграничный паспорт гражданина РФ</option>
+            <option value="дипломатический паспорт РФ">Дипломатический паспорт РФ</option>
+            <option value="служебный паспорт РФ">Служебный паспорт РФ</option>
+            <option value="удостоверение личности гражданина РФ">Удостоверение личности гражданина РФ</option>
+            <option value="временное удостоверение личности гражданина РФ">Временное удостоверение личности гражданина РФ</option>
+            <option value="удостоверение личности военнослужащего РФ">Удостоверение личности военнослужащего РФ</option>
+        </select>
 
-            <label for="model">Модель автомобиля</label>
-            <input type="text" id="model" name="car_model" required>
+        <label>Серия документа</label>
+        <input type="text" name="document_series" required>
 
-            <label for="reg_number">Рег. номер</label>
-            <input type="text" id="reg_number" name="car_number" required>
+        <label>Номер документа</label>
+        <input type="text" name="document_number" required>
 
-            <label for="vin">VIN номер</label>
-            <input type="text" id="vin" name="vin" required>
+        <label>Дата выдачи документа</label>
+        <input type="date" name="document_date" required>
 
-            <label for="mileage">Пробег</label>
-            <input type="number" id="mileage" name="mileage" required>
+        <label>Орган, выдавший документ</label>
+        <input type="text" name="issuing_authority" required>
 
-            <label for="contact_name">Контактное лицо</label>
-            <input type="text" id="contact_name" name="contact_name" required>
+        <label>Код подразделения</label>
+        <input type="text" name="department_code" required>
 
-            <label for="phone">Телефон</label>
-            <input type="tel" id="phone" name="phone" required>
+        <label>Адрес регистрации</label>
+        <input type="text" name="registration_address" required>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+        <label>Адрес фактического проживания</label>
+        <input type="text" name="actual_address" required>
 
-            <label for="description">Описание неисправности</label>
-            <textarea id="description" name="issue" required></textarea>
+        <label>Идентификационный номер ТС (VIN)</label>
+        <input type="text" name="vin" required>
 
-            <button type="submit">Отправить заявку</button>
-        </form>
-    </div>
+        <label>Марка ТС</label>
+        <input type="text" name="car_brand" required>
+
+        <label>Модель ТС</label>
+        <input type="text" name="car_model" required>
+
+        <label>Государственный регистрационный знак</label>
+        <input type="text" name="license_plate" required>
+
+        <label>Примечания</label>
+        <textarea name="notes"></textarea>
+
+        <button type="submit" id="submitBtn">Отправить заявку</button>
+
+    </form>
 
     <script>
-        document.querySelector("#zajavka-na-CTO").addEventListener("submit", function (event) {
-            event.preventDefault();
+        document.getElementById("trustForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Останавливаем стандартную отправку формы
 
-            // Проверка всех полей на заполненность
-            let isValid = true;
-            document.querySelectorAll("input[required], textarea[required]").forEach(function(input) {
-                if (!input.value) {
-                    isValid = false;
-                    input.style.borderColor = "red"; // Подсвечиваем красным незаполненные поля
-                } else {
-                    input.style.borderColor = "#ccc"; // Восстанавливаем цвет границы
-                }
-            });
-
-            if (!isValid) {
-                document.querySelector("#error-message").style.display = "block";
-                document.querySelector("#success-message").style.display = "none";
-                return; // Прекращаем выполнение, если есть незаполненные поля
+            if (!document.getElementById("consent").checked) {
+                alert("Вы должны дать согласие на обработку персональных данных.");
+                return;
             }
 
-            let formData = {
-                request_date: document.querySelector("#date_request").value,
-                city: document.querySelector("#city").value,
-                owner: document.querySelector("#owner").value,
-                car_brand: document.querySelector("#brand").value,
-                car_model: document.querySelector("#model").value,
-                car_number: document.querySelector("#reg_number").value,
-                vin: document.querySelector("#vin").value,
-                mileage: document.querySelector("#mileage").value,
-                contact_name: document.querySelector("#contact_name").value,
-                phone: document.querySelector("#phone").value,
-                email: document.querySelector("#email").value,
-                issue: document.querySelector("#description").value
-            };
+            const formData = new FormData(this);
+            const object = {};
+            formData.forEach((value, key) => object[key] = value);
+            const json = JSON.stringify(object);
 
-            fetch("http://localhost:3000/submit-form", {
+            fetch("https://script.google.com/macros/s/AKfycbzH1AFXwXsQx58NTWctTc7AnX8dovQ-MaihUsRLvoxAX2M3tSvVDMQqKKA1klBBvT7I/exec", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData)
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: json
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === "success") {
-                    document.querySelector("#success-message").style.display = "block";
-                    document.querySelector("#error-message").style.display = "none";
-                    document.querySelector("#zajavka-na-CTO").reset();  // Очищаем форму
-                } else {
-                    document.querySelector("#error-message").style.display = "block";
-                    document.querySelector("#success-message").style.display = "none";
-                }
+            .then(() => {
+                alert("Заявка отправлена!");
+                document.getElementById("trustForm").reset();
             })
-            .catch(error => {
-                console.error("Ошибка:", error);
-                document.querySelector("#error-message").style.display = "block";
-                document.querySelector("#success-message").style.display = "none";
-            });
+            .catch(error => console.error("Ошибка:", error));
         });
     </script>
+
 </body>
 </html>
