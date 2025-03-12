@@ -71,9 +71,11 @@
         .checkbox-container {
             display: flex;
             align-items: center;
-            justify-content: center; /* Центрирование элементов */
+            justify-content: center; /* Центрируем по горизонтали */
             margin-bottom: 15px;
-            width: 100%;
+            width: auto; /* Убираем растягивание на всю ширину */
+            margin-left: auto;
+            margin-right: auto; /* Центрируем саму группу */
         }
         
         .checkbox-container input {
@@ -89,7 +91,7 @@
             font-size: 16px;
             white-space: normal;
             margin: 0;
-            display: inline-block; /* Чтобы текст не занимал всю ширину */
+            display: inline-block; /* Текст не будет растягиваться на всю ширину */
         }
         
         button {
