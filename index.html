@@ -136,11 +136,14 @@
         
         /* Медиазапрос для мобильных устройств */
         @media (max-width: 600px) {
-            input, textarea, select {
-                font-size: 16px;
+            .checkbox-container {
+                flex-wrap: wrap;    /* Позволяет элементам переходить на следующую строку, если они не помещаются */
+                justify-content: flex-start; /* Начинаем выравнивание с левого края */
+                gap: 5px;  /* Меньшее расстояние между чекбоксом и текстом */
             }
-            button {
-                font-size: 16px;
+        
+            .checkbox-container label {
+                font-size: 12px;  /* Меньший размер текста */
             }
         }
       
