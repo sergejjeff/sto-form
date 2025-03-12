@@ -36,8 +36,10 @@
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             margin-top: 0; /* Убираем отступ сверху */
             overflow: hidden;
+            width: 100%; /* Занимает 100% ширины родительского контейнера */
+            box-sizing: border-box;
         }
-        
+
         input, textarea, select {
             width: 100%;
             padding: 12px;
@@ -53,11 +55,11 @@
         
         .container {
             width: 100%;
-            max-width: 600px;
+            max-width: 600px; /* Ограничиваем максимальную ширину */
             margin: 0 auto;
             position: relative;
-            padding-top: 0;
-        }
+            padding-top: 20px; /* Добавляем немного отступа сверху */
+        }        
         
         .container img {
             width: 100%;
@@ -69,15 +71,13 @@
         }
         
         .checkbox-container {
-            display: inline-flex; /* Делаем контейнер инлайновым, чтобы он не растягивался на всю ширину */
-            align-items: center;
-            justify-content: center; /* Центрирование элементов */
+            display: flex;
+            align-items: center;  /* Центрируем элементы по вертикали */
+            justify-content: center; /* Центрируем элементы по горизонтали */
             margin-bottom: 15px;
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto; /* Центрируем саму группу */
+            width: 100%; /* Занимает 100% ширины контейнера */
         }
-
+        
         .checkbox-container input {
             width: 18px;
             height: 18px;
@@ -91,7 +91,6 @@
             font-size: 16px;
             white-space: normal;
             margin: 0;
-            display: inline-block; /* Чтобы текст не занимал всю ширину */
         }
         
         button {
