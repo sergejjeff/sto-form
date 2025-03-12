@@ -1,48 +1,149 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Заявка на доверенность</title>
+    <title>Форма заявки</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
+            margin: 0;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
         }
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        input, select, textarea {
+        
+        .container {
             width: 100%;
-            padding: 8px;
-            margin-top: 5px;
+            max-width: 600px; /* Ограничиваем максимальную ширину */
+            margin: 0 auto;
+            position: relative;
+            padding-top: 0; /* Убираем лишний отступ сверху */
+        }
+        
+        .container img {
+            width: 100%;
+            max-width: 800px;
+            display: block;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 0; /* Убираем отступ сверху */
+            overflow: hidden;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            margin: 6px 0;
+            border-radius: 5px;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box; /* Учитываем отступы внутри поля при расчете ширины */
+            display: block; /* Обеспечиваем блоковое расположение для полей */
+            margin-left: auto; /* Центрируем элементы */
+            margin-right: auto;
         }
-        input[type="checkbox"] {
-            width: auto;
-            margin-right: 10px;
+        
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            padding-top: 0;
         }
+        
+        .container img {
+            width: 100%;
+            max-width: 800px;
+            display: block;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 0;
+            overflow: hidden;
+        }
+        
         button {
-            background-color: #007bff;
+            background-color: #0183ff;
             color: white;
-            padding: 10px;
+            padding: 12px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s ease;
         }
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
+        
+        button:hover {
+            background-color: #016bcc;
+        }
+        
+        .alert {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin: 20px 0;
+            display: none;
+            text-align: center;
+        }
+        
+        .alert.error {
+            background-color: #f44336;
+        }
+        
+        /* Медиазапрос для мобильных устройств */
+        @media (max-width: 600px) {
+            input, textarea, select {
+                font-size: 16px;
+            }
+            button {
+                font-size: 16px;
+            }
+        }
+        
+            form {
+                padding: 20px;
+                margin-top: 0;
+            }
+        
+            input, textarea, select {
+                padding: 10px;
+                margin: 6px 0;
+                font-size: 14px;
+                box-sizing: border-box; /* Это гарантирует, что отступы внутри поля не будут увеличивать его ширину */
+                display: block;
+                margin-left: auto; /* Центрируем элементы */
+                margin-right: auto;
+            }
+        
+            button {
+                padding: 12px 0;
+            }
+        
+            .container img {
+                width: 100%;
+                max-width: 100%;
+                position: relative;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <!-- Логотип / Изображение -->
+        <img src="logo.png" alt="Логотип">
 
     <h2>Заявка на доверенность</h2>
     <form id="trustForm">
