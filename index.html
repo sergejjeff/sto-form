@@ -79,23 +79,27 @@
 
         .checkbox-container {
             display: flex;
-            align-items: center; /* Выровняем чекбокс и текст */
-            justify-content: center; /* Центрируем всю группу */
-            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Расстояние между чекбоксом и текстом */
             margin-bottom: 15px;
+            text-align: center; /* Выравнивание текста */
+            width: 100%;
         }
         
         .checkbox-container input {
-            width: 20px;  /* Вернем нормальный размер */
-            height: 20px;
+            width: 18px;  
+            height: 18px;
             cursor: pointer;
             accent-color: #007bff;
         }
         
         .checkbox-container label {
             cursor: pointer;
-            font-size: 16px; /* Чуть больше для баланса */
-            white-space: nowrap;
+            font-size: 16px;
+            white-space: normal; /* Разрешает перенос текста */
+            max-width: 80%; /* Чтобы текст не растягивался */
+            text-align: left; /* Выравниваем относительно чекбокса */
         }
         
         button {
