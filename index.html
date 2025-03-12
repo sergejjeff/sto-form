@@ -76,6 +76,13 @@
             margin-top: 0;
             overflow: hidden;
         }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
         
         button {
             background-color: #0183ff;
@@ -151,10 +158,10 @@
     <h2>Заявка на доверенность</h2>
     <form id="trustForm">
 
-        <label>
+        <div class="checkbox-container">
             <input type="checkbox" id="consent" checked>
-            Даю согласие на обработку персональных данных
-        </label>
+            <label for="consent">Даю согласие на обработку персональных данных</label>
+        </div>
 
         <label>Город предъявления доверенности</label>
         <input type="text" name="city" required>
