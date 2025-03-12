@@ -79,24 +79,25 @@
 
         .checkbox-container {
             display: flex;
-            align-items: center;
+            align-items: center; /* Выравниваем чекбокс и текст по центру */
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px; /* Отступ, чтобы форма не прижималась */
+            gap: 8px;
+            margin-bottom: 15px;
         }
         
         .checkbox-container input {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             cursor: pointer;
             accent-color: #007bff;
+            vertical-align: middle; /* Исправляем позицию */
         }
         
         .checkbox-container label {
             cursor: pointer;
             font-size: 14px;
             white-space: nowrap;
-            text-align: left; /* Убеждаемся, что текст не центрируется глобально */
+            line-height: 1; /* Держим текст вровень с чекбоксом */
         }
         
         button {
