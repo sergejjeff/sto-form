@@ -17,7 +17,7 @@
             max-width: 600px; /* Ограничиваем максимальную ширину */
             margin: 0 auto;
             position: relative;
-            padding-top: 0; /* Убираем лишний отступ сверху */
+            padding-top: 20px; 
         }
         
         .container img {
@@ -52,7 +52,7 @@
             margin-left: auto; /* Центрируем элементы */
             margin-right: auto;
         }
-        
+            
         .container {
             width: 100%;
             max-width: 600px; /* Ограничиваем максимальную ширину */
@@ -72,12 +72,13 @@
         
         .checkbox-container {
             display: flex;
-            align-items: center;  /* Центрируем элементы по вертикали */
-            justify-content: center; /* Центрируем элементы по горизонтали */
+            align-items: center;  /* Центрируем по вертикали */
+            justify-content: center; /* Центрируем по горизонтали */
             margin-bottom: 15px;
-            width: 100%; /* Занимает 100% ширины контейнера */
+            width: 100%; /* Занимает всю ширину родительского контейнера */
         }
         
+        /* Чекбокс */
         .checkbox-container input {
             width: 18px;
             height: 18px;
@@ -86,6 +87,7 @@
             margin-right: 10px;
         }
         
+        /* Текст рядом с чекбоксом */
         .checkbox-container label {
             cursor: pointer;
             font-size: 16px;
