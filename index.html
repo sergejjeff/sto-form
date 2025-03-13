@@ -185,9 +185,9 @@
     <form id="trustForm">
 
         <div class="checkbox-container">
-            <input type="hidden" name="consent" value="Нет">
-            <input type="checkbox" id="consent" name="consent" value="Да" checked>
-            <label for="consent">Даю согласие на обработку персональных данных</label>
+            <input type="hidden" name="agreement" value="Нет">
+            <input type="checkbox" id="agreement" name="agreement" value="Да" checked>
+            <label for="agreement">Даю согласие на обработку персональных данных</label>
         </div>
 
         <label>Город предъявления доверенности</label>
@@ -257,7 +257,7 @@
         document.getElementById("trustForm").addEventListener("submit", function(event) {
             event.preventDefault(); // Останавливаем стандартную отправку формы
 
-            if (!document.getElementById("consent").checked) {
+            if (!document.getElementById("agreement").checked) {
                 alert("Вы должны дать согласие на обработку персональных данных.");
                 return;
             }
