@@ -113,7 +113,7 @@
             cursor: pointer;
             font-size: 18px;
             width: 100%;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease;         
         }
         
         button:hover {
@@ -265,6 +265,8 @@
             const object = {};
             formData.forEach((value, key) => object[key] = value);
             const json = JSON.stringify(object);
+
+            console.log("Отправляемые данные:", json); // Выводим JSON в консоль
 
             fetch("https://script.google.com/macros/s/AKfycbxUxvnkKuhb_UmGNI6rRnNjB3Sa4E-oJUqI0_0MUczlmICuouGkVrzm0Ki40UIShyvP/exec", {
                 method: "POST",
