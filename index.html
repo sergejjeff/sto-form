@@ -113,7 +113,7 @@
             cursor: pointer;
             font-size: 18px;
             width: 100%;
-            transition: background-color 0.3s ease;         
+            transition: background-color 0.3s ease;
         }
         
         button:hover {
@@ -185,8 +185,8 @@
     <form id="trustForm">
 
         <div class="checkbox-container">
-            <input type="checkbox" id="agreement" name="agreement" value="Да" required>
-            <label for="agreement">Даю согласие на обработку персональных данных</label>
+            <input type="checkbox" id="consent" checked>
+            <label for="consent">Даю согласие на обработку персональных данных</label>
         </div>
 
         <label>Город предъявления доверенности</label>
@@ -266,23 +266,23 @@
             formData.forEach((value, key) => object[key] = value);
             const json = JSON.stringify(object);
 
-            console.log("Отправляемые данные:", json); // Выводим JSON в консоль
-
-        fetch("https://script.google.com/macros/s/AKfycbxUxvnkKuhb_UmGNI6rRnNjB3Sa4E-oJUqI0_0MUczlmICuouGkVrzm0Ki40UIShyvP/exec", {
-                        method: "POST",
-                        mode: "no-cors",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: json
-                    })
-                    .then(() => {
-                        alert("Заявка отправлена!");
-                        document.getElementById("trustForm").reset();
-                    })
-                    .catch(error => console.error("Ошибка:", error));
-                });
+            fetch("https://script.google.com/macros/s/AKfycbxUxvnkKuhb_UmGNI6rRnNjB3Sa4E-oJUqI0_0MUczlmICuouGkVrzm0Ki40UIShyvP/exec", {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: json
+            })
+            .then(() => {
+                alert("Заявка отправлена!");
+                document.getElementById("trustForm").reset();
+            })
+            .catch(error => console.error("Ошибка:", error));
+        });
     </script>
 
 </body>
 </html>
+
+
