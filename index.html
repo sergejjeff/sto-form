@@ -252,21 +252,22 @@
         <button type="submit" id="submitBtn">Отправить заявку</button>
 
     </form>
-
-    <script>
+    <script>       
         document.getElementById("trustForm").addEventListener("submit", function(event) {
             event.preventDefault(); // Останавливаем стандартную отправку формы
-
+    
             if (!document.getElementById("agreement").checked) {
                 alert("Вы должны дать согласие на обработку персональных данных.");
                 return;
             }
-
+    
+            // Собираем данные формы в объект
             const formData = new FormData(this);
-            const object = {};
-            formData.forEach((value, key) => object[key] = value);
-            const json = JSON.stringify(object);
-
+            const object = {}; 
+            formData.forEach((value, key) => object[key] = value); // Преобразуем FormData в обычный объект
+            const json = JSON.stringify(object); // Преобразуем объект в JSON
+    
+            // Отправляем данные на сервер (в Google Apps Script)
             fetch("https://script.google.com/macros/s/AKfycbxUxvnkKuhb_UmGNI6rRnNjB3Sa4E-oJUqI0_0MUczlmICuouGkVrzm0Ki40UIShyvP/exec", {
                 method: "POST",
                 mode: "no-cors",
@@ -277,11 +278,10 @@
             })
             .then(() => {
                 alert("Заявка отправлена!");
-                document.getElementById("trustForm").reset();
+                document.getElementById("trustForm").reset(); // Сбросить форму
             })
             .catch(error => console.error("Ошибка:", error));
         });
     </script>
-
 </body>
 </html>
