@@ -266,6 +266,8 @@
             const object = {}; 
             formData.forEach((value, key) => object[key] = value); // Преобразуем FormData в обычный объект
             const json = JSON.stringify(object); // Преобразуем объект в JSON
+
+            console.log(object);
     
             // Отправляем данные на сервер (в Google Apps Script)
             fetch("https://script.google.com/macros/s/AKfycbxUxvnkKuhb_UmGNI6rRnNjB3Sa4E-oJUqI0_0MUczlmICuouGkVrzm0Ki40UIShyvP/exec", {
