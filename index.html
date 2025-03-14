@@ -252,38 +252,74 @@
         <button type="submit" id="submitBtn">Отправить заявку</button>
 
     </form>
-    <script>       
-        document.getElementById("trustForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Останавливаем стандартную отправку формы
-    
-            if (!document.getElementById("agreement").checked) {
-                alert("Вы должны дать согласие на обработку персональных данных.");
+<script>
+    document.querySelector("#trustForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Проверка обязательных полей
+        const formElements = event.target.elements;
+        for (let element of formElements) {
+            if (element.required && !element.value) {
+                alert('Пожалуйста, заполните все обязательные поля!');
                 return;
             }
-    
-            // Собираем данные формы в объект
-            const formData = new FormData(this);
-            const object = {}; 
-            formData.forEach((value, key) => object[key] = value); // Преобразуем FormData в обычный объект
-            const json = JSON.stringify(object); // Преобразуем объект в JSON
+        }
 
-            console.log(object);
-    
-            // Отправляем данные на сервер (в Google Apps Script)
-            fetch("https://script.google.com/macros/s/AKfycbzj9QJK-MLPWa_dsUdQc0XwrVPiRe8l4fKkPtcW4w6Uoj42QGX7WdvYTPmuEtwPeCkh/exec", {
-                method: "POST",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: json
-            })
-            .then(() => {
-                alert("Заявка отправлена!");
-                document.getElementById("trustForm").reset(); // Сбросить форму
-            })
-            .catch(error => console.error("Ошибка:", error));
+        let formData = {
+            formType: "Trust", // Тип формы - доверенность
+            city: document.querySelector("input[name='city']").value,
+            full_name: document.querySelector("input[name='full_name']").value,
+            phone: document.querySelector("input[name='phone']").value,
+            email: document.querySelector("input[name='email']").value,
+            document_type: document.querySelector("select[name='document_type']").value,
+            document_series: document.querySelector("input[name='document_series']").value,
+            document_number: document.querySelector("input[name='document_number']").value,
+            issue_date: document.querySelector("input[name='issue_date']").value,
+            issuing_authority: document.querySelector("input[name='issuing_authority']").value,
+            department_code: document.querySelector("input[name='department_code']").value,
+            registration_address: document.querySelector("input[name='registration_address']").value,
+            actual_address: document.querySelector("input[name='actual_address']").value,
+            vin: document.querySelector("input[name='vin']").value,
+            car_brand: document.querySelector("input[name='car_brand']").value,
+            car_model: document.querySelector("input[name='car_model']").value,
+            license_plate: document.querySelector("input[name='license_plate']").value,
+            notes: document.querySelector("textarea[name='notes']").value
+        };
+
+        // Блокируем кнопку отправки, чтобы предотвратить дубли
+        const submitButton = document.querySelector("#submitBtn");
+        submitButton.disabled = true;
+
+        fetch("http://90.156.225.9:3000/submit-form", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                alert("Заявка успешно отправлена!");
+
+                // Очистка формы
+                document.querySelector("#trustForm").reset();
+
+                // Разблокируем кнопку отправки
+                submitButton.disabled = false;
+            } else {
+                alert("Ошибка при отправке заявки!");
+
+                // Разблокируем кнопку отправки
+                submitButton.disabled = false;
+            }
+        })
+        .catch(error => {
+            console.error("Ошибка:", error);
+            alert("Произошла ошибка, попробуйте снова!");
+
+            // Разблокируем кнопку отправки
+            submitButton.disabled = false;
         });
-    </script>
+    });
+</script>
 </body>
 </html>
