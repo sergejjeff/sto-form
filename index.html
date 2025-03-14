@@ -272,7 +272,7 @@
             // Отправляем данные на сервер (в Google Apps Script)
             fetch("https://script.google.com/macros/s/AKfycbzj9QJK-MLPWa_dsUdQc0XwrVPiRe8l4fKkPtcW4w6Uoj42QGX7WdvYTPmuEtwPeCkh/exec", {
                 method: "POST",
-                mode: "no-cors",
+                mode: "cors",
                 headers: {
                     "Content-Type": "application/json"
                 },
